@@ -1,4 +1,4 @@
-import 'package:first_app/first_screen.dart';
+import 'package:first_app/first/first_screen.dart';
 import 'package:flutter/material.dart';
 
 // Person();

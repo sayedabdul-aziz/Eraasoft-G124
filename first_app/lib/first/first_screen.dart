@@ -1,4 +1,4 @@
-import 'package:first_app/social_buttons.dart';
+import 'package:first_app/first/social_buttons.dart';
 import 'package:flutter/material.dart';
 
 class FirstScreen extends StatelessWidget {

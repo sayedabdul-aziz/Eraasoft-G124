@@ -6,7 +6,7 @@ showErrorToast(BuildContext context, String message) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
     duration: const Duration(seconds: 2),
     backgroundColor: AppColors.redColor,
-    content:
-        Text(message, style: getBodyTextStyle(color: AppColors.whiteColor)),
+    content: Text(message,
+        style: getBodyTextStyle(context, color: AppColors.whiteColor)),
   ));
 }

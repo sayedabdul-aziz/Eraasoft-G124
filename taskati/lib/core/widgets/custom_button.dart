@@ -22,12 +22,12 @@ class CustomButton extends StatelessWidget {
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
             shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
             backgroundColor: AppColors.primaryColor,
           ),
           child: Text(
             text,
-            style: getBodyTextStyle(color: AppColors.whiteColor),
+            style: getBodyTextStyle(context, color: AppColors.whiteColor),
           )),
     );
   }

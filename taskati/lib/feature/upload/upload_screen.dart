@@ -28,8 +28,10 @@ class _UploadScreenState extends State<UploadScreen> {
           TextButton(
               onPressed: () {
                 if (path != null && nameController.text.isNotEmpty) {
-                  AppLocalStorage.cacheData("name", nameController.text);
-                  AppLocalStorage.cacheData("image", path);
+                  AppLocalStorage.cacheData(
+                      AppLocalStorage.nameKey, nameController.text);
+                  AppLocalStorage.cacheData(AppLocalStorage.imageKey, path);
+                  AppLocalStorage.cacheData(AppLocalStorage.isUploaded, true);
                   context.pushReplacement(const HomeScreen());
                 } else if (path == null && nameController.text.isNotEmpty) {
                   showErrorToast(context, "Please select an image");
@@ -42,7 +44,7 @@ class _UploadScreenState extends State<UploadScreen> {
               },
               child: Text(
                 "Done",
-                style: getBodyTextStyle(color: AppColors.primaryColor),
+                style: getBodyTextStyle(context, color: AppColors.primaryColor),
               )),
         ],
       ),
@@ -56,7 +58,7 @@ class _UploadScreenState extends State<UploadScreen> {
                 radius: 60,
                 backgroundColor: AppColors.primaryColor,
                 backgroundImage: path != null
-                    ? FileImage(File(path!))
+                    ? FileImage(File(path!)) as ImageProvider
                     : const AssetImage("assets/images/user.png"),
               ),
               const SizedBox(height: 20),
@@ -70,7 +72,7 @@ class _UploadScreenState extends State<UploadScreen> {
               const SizedBox(height: 10),
               CustomButton(
                 width: 250,
-                text: "Upload From Image",
+                text: "Upload From Gallery",
                 onPressed: () {
                   uploadImage(false);
                 },

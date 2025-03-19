@@ -1,33 +1,33 @@
-// import 'package:hive/hive.dart';
-// import 'package:taskati/core/model/task_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-// class AppLocalStorage {
-//   static Box? userBox;
-//   static Box<TaskModel>? taskBox;
+class AppLocalStorage {
+  static late SharedPreferences pref;
 
-//   static String nameKey = "name";
-//   static String imageKey = "image";
-//   static String isUploaded = "isUploaded";
-//   static String isDarkTheme = "isDarkTheme";
+  static String tokenKey = "token";
 
-//   static init() {
-//     userBox = Hive.box("userBox");
-//     taskBox = Hive.box<TaskModel>("taskBox");
-//   }
+  static init() async {
+    pref = await SharedPreferences.getInstance();
+  }
 
-//   static cacheData(String key, dynamic value) async {
-//     await userBox?.put(key, value);
-//   }
+  static cacheData(String key, dynamic value) async {
+    if (value is String) {
+      await pref.setString(key, value);
+    } else if (value is bool) {
+      await pref.setBool(key, value);
+    } else if (value is int) {
+      await pref.setInt(key, value);
+    } else if (value is double) {
+      await pref.setDouble(key, value);
+    } else {
+      await pref.setStringList(key, value);
+    }
+  }
 
-//   static getCachedData(String key) {
-//     return userBox?.get(key);
-//   }
+  static getCachedData(String key) {
+    return pref.get(key);
+  }
 
-//   static cacheTask(String key, TaskModel value) async {
-//     await taskBox?.put(key, value);
-//   }
-
-//   static TaskModel? getCachedTasks(String key) {
-//     return taskBox?.get(key);
-//   }
-// }
+  static clearCachedData(String key) {
+    return pref.remove(key);
+  }
+}

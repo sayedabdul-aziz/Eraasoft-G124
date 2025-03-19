@@ -4,8 +4,7 @@ import 'package:bookia/core/utils/text_style.dart';
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  static ThemeData lightTheme =
-   ThemeData(
+  static ThemeData lightTheme = ThemeData(
       fontFamily: AppConstants.fontFamily,
       scaffoldBackgroundColor: AppColors.whiteColor,
       appBarTheme: const AppBarTheme(

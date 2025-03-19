@@ -14,6 +14,14 @@ extension Navigation on BuildContext {
       MaterialPageRoute(builder: (context) => widget),
     );
   }
+
+  pushAndRemoveUntil(Widget widget) {
+    Navigator.pushAndRemoveUntil(
+      this,
+      MaterialPageRoute(builder: (context) => widget),
+      (route) => false,
+    );
+  }
 }
 
 bool isEmailValid(String value) {

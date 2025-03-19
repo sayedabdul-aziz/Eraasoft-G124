@@ -9,12 +9,14 @@ class CustomButton extends StatelessWidget {
     required this.onPressed,
     this.width,
     this.hasBorder = false,
+    this.height,
     this.bgColor = AppColors.primaryColor,
     this.fgColor = AppColors.whiteColor,
   });
   final String text;
   final Function() onPressed;
   final double? width;
+  final double? height;
   final bool hasBorder;
   final Color bgColor;
   final Color fgColor;
@@ -23,7 +25,7 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: width ?? double.infinity,
-      height: 55,
+      height: height ?? 55,
       child: ElevatedButton(
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
